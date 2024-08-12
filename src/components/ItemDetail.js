@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
-import '../styles/ItemDetail.css';  
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ItemCount from './ItemCount';
+import { CartContext } from '../context/CartContext';
+import '../styles/ItemDetail.css';
 
 function ItemDetail({ item }) {
   const [quantity, setQuantity] = useState(0);
+  const { addItemToCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const onAdd = (quantityToAdd) => {
     setQuantity(quantityToAdd);
+    addItemToCart(item, quantityToAdd);
     console.log(`Adicionou ${quantityToAdd} ${item.name} ao carrinho`);
+    navigate('/cart'); // Redireciona para o carrinho após adicionar
   };
 
   return (
@@ -15,10 +21,12 @@ function ItemDetail({ item }) {
       <img src={item.imageUrl} alt={item.name} className="item-detail-image" />
       <div className="item-detail-info">
         <h2>{item.name}</h2>
-        <p>{item.description}</p>
-        <p className="item-detail-price">R$ {item.price.toFixed(2)}</p>
+        <p><strong>Descrição:</strong> {item.description}</p>
+        <p><strong>Material:</strong> {item.material}</p>
+        <p><strong>Cor:</strong> {item.color}</p>
+        <p className="item-detail-price"><strong>Preço:</strong> R$ {item.price.toFixed(2)}</p>
         <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
-        {quantity > 0 && <button className="finish-purchase-button">Finalizar Compra</button>}
+        {quantity > 0 && <button className="finish-purchase-button" onClick={() => navigate('/cart')}>Finalizar Compra</button>}
       </div>
     </div>
   );

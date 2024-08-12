@@ -1,27 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Item from './Item';
-import { getItemsByCategory } from '../data/data';
-import '../styles/Item.css';  
+import ItemDetail from './ItemDetail';
+import { getItemById } from '../data/data';
 
-function ItemListContainer() {
+function ItemDetailContainer() {
   const { id } = useParams();
-  const [items, setItems] = useState([]);
+  const [item, setItem] = useState(null);
 
   useEffect(() => {
-    setItems(getItemsByCategory(id));
+    const foundItem = getItemById(id);
+    setItem(foundItem);
   }, [id]);
 
-  return (
-    <div>
-      <h2>Nosso Catálogo de Ursos de Pelúcia</h2>
-      <div className="item-list">
-        {items.map(item => (
-          <Item key={item.id} item={item} />
-        ))}
-      </div>
-    </div>
-  );
+  return item ? <ItemDetail item={item} /> : <p>Carregando...</p>;
 }
 
-export default ItemListContainer;
+export default ItemDetailContainer;
