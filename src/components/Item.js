@@ -6,14 +6,14 @@ import '../styles/Item.css';
 
 function Item({ item }) {
   const [quantity, setQuantity] = useState(0);
-  const { addItemToCart } = useContext(CartContext);
+  const { addItem } = useContext(CartContext);
   const navigate = useNavigate();
 
   const onAdd = (quantityToAdd) => {
     setQuantity(quantityToAdd);
-    addItemToCart(item, quantityToAdd);
+    addItem(item, quantityToAdd);
     console.log(`Adicionou ${quantityToAdd} ${item.name} ao carrinho`);
-    navigate('/cart'); // Redireciona para o carrinho após adicionar
+    navigate('/cart');
   };
 
   return (
