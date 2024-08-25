@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { collection, getDocs, query, where } from "firebase/firestore";
+import db from '../firebaseConfig';
 import Item from './Item';
-import { getItemsByCategory } from '../data/data';
-import '../styles/Item.css';  // Certifique-se de que o caminho está correto
+import '../styles/Item.css';
 
 function ItemListContainer() {
   const { id } = useParams();
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    setItems(getItemsByCategory(id));
+    const fetchItems = async () => {
+      let q;
+      if (id) {
+        q = query(collection(db, "items"), where("category", "==", id));
+      } else {
+        q = collection(db, "items");
+      }
+      const querySnapshot = await getDocs(q);
+      const itemsArray = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setItems(itemsArray);
+    };
+
+    fetchItems();
   }, [id]);
 
   return (

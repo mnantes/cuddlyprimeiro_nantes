@@ -8,7 +8,7 @@ function CartWidget() {
   const quantity = getCartQuantity();
 
   if (quantity === 0) {
-    return null; // Não mostrar o widget se o carrinho estiver vazio
+    return null; 
   }
 
   return (

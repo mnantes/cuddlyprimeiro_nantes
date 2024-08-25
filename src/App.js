@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
+import OrderConfirmation from './components/OrderConfirmation';
 import { CartProvider } from './context/CartContext';
 import './styles/App.css';
 
@@ -18,6 +19,7 @@ function App() {
             <Route path="/category/:id" element={<ItemListContainer />} />
             <Route path="/item/:id" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
           </Routes>
         </div>
       </Router>
