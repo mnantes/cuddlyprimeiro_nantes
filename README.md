@@ -34,7 +34,7 @@ Cuddly Cloud is an e-commerce application for selling plush teddy bears, built u
 ## Purchase Flow
 Below is a GIF showing the complete purchase flow in the application:
 
-![Purchase Flow](path/to/your/gif.gif)
+![Purchase Flow](vendafull.gif)
 
 ## Contribution
 Feel free to submit pull requests or open issues to suggest improvements or fixes.
