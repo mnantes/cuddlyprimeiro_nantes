@@ -1,0 +1,35 @@
+.loading-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #00FFFF; /* Ciano */
+  }
+  
+  .loading-logo {
+    width: 850px; /* Tamanho do logo */
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .spinner {
+    margin-top: 20px;
+    font-size: 40px;
+    color: #000; /* Cor do spinner */
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  

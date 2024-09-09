@@ -1,0 +1,37 @@
+body {
+    background-color: #00FFFF; 
+    overflow: hidden; 
+  }
+  
+  .cloud {
+    position: absolute;
+    top: 10%;
+    left: -100px;
+    width: 150px;
+    opacity: 0.8;
+    animation: moveClouds 20s linear infinite;
+  }
+  
+  .cloud:nth-child(2) {
+    top: 40%;
+    left: -200px;
+    width: 250px;
+    animation-duration: 25s;
+  }
+  
+  .cloud:nth-child(3) {
+    top: 70%;
+    left: -300px;
+    width: 200px;
+    animation-duration: 30s;
+  }
+  
+  @keyframes moveClouds {
+    0% {
+      left: -300px;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
